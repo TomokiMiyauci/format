@@ -63,9 +63,9 @@ assertEquals(format("{0} world!", ["Hello"]), "Hello world!");
 format("{0} world!", []);
 ```
 
-### Delimiter
+### Placeholder
 
-A delimiter is a pair of prefix and suffix.
+Placeholder is a pair of prefix and suffix.
 
 | Name   | Default |
 | ------ | ------- |
@@ -83,12 +83,12 @@ import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 const result = format("should be ${expected}, actual ${actual}", {
   expected: "string",
   actual: "number",
-}, { delimiters: [{ prefix: "${", suffix: "}" }] });
+}, { placeholders: [{ prefix: "${", suffix: "}" }] });
 assertEquals(result, "should be string, actual number");
 
 //@ts-expect-error it should be error
 format("should be ${expected}, actual ${actual}", {}, {
-  delimiters: [{ prefix: "${", suffix: "}" }],
+  placeholders: [{ prefix: "${", suffix: "}" }],
 });
 ```
 
@@ -99,12 +99,12 @@ import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 const result = format("Hello %s!!!", { "": "world" }, {
-  delimiters: [{ prefix: "%", suffix: "s" }],
+  placeholders: [{ prefix: "%", suffix: "s" }],
 });
 assertEquals(result, "Hello world!!!");
 ```
 
-Multiple delimiters:
+Multiple placeholders:
 
 ```ts
 import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
@@ -115,7 +115,7 @@ const result = format("[0] {name}: {title}", {
   name: "",
   title: "",
 }, {
-  delimiters: [
+  placeholders: [
     { prefix: "{", suffix: "}" },
     { prefix: "[", suffix: "]" },
   ],
@@ -123,8 +123,8 @@ const result = format("[0] {name}: {title}", {
 assertEquals(result, "abcde{fg}ijk]a}");
 ```
 
-The computational complexity of delimiter is O(n) compared to argument. It is
-recommended to reduce the number of delimiters as much as possible.
+The computational complexity of placeholder is O(n) compared to argument. It is
+recommended to reduce the number of placeholders as much as possible.
 
 ### Custom serialization
 
