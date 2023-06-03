@@ -7,9 +7,9 @@
 [![GitHub](https://img.shields.io/github/license/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/blob/main/LICENSE)
 
 [![test](https://github.com/TomokiMiyauci/format/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/format/actions/workflows/test.yaml)
-[![NPM](https://nodei.co/npm/format.png?mini=true)](https://nodei.co/npm/format/)
+[![NPM](https://nodei.co/npm/format.png?mini=true)](https://nodei.co/npm/@miyauci/format/)
 
-Utilities for formatting and printing string.
+Formatting and printing string utilities.
 
 ## Features
 
