@@ -1,13 +1,13 @@
-# fmt
+# format
 
-[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/fmt)
-[![deno doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/fmt/mod.ts)
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/TomokiMiyauci/fmt)](https://github.com/TomokiMiyauci/fmt/releases)
-[![codecov](https://codecov.io/github/TomokiMiyauci/fmt/branch/main/graph/badge.svg)](https://codecov.io/gh/TomokiMiyauci/fmt)
-[![GitHub](https://img.shields.io/github/license/TomokiMiyauci/fmt)](https://github.com/TomokiMiyauci/fmt/blob/main/LICENSE)
+[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/format)
+[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/format/mod.ts)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/releases)
+[![codecov](https://codecov.io/github/TomokiMiyauci/format/branch/main/graph/badge.svg)](https://codecov.io/gh/TomokiMiyauci/format)
+[![GitHub](https://img.shields.io/github/license/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/blob/main/LICENSE)
 
-[![test](https://github.com/TomokiMiyauci/fmt/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/fmt/actions/workflows/test.yaml)
-[![NPM](https://nodei.co/npm/fmt.png?mini=true)](https://nodei.co/npm/fmt/)
+[![test](https://github.com/TomokiMiyauci/format/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/format/actions/workflows/test.yaml)
+[![NPM](https://nodei.co/npm/format.png?mini=true)](https://nodei.co/npm/format/)
 
 Utilities for formatting and printing string.
 
@@ -17,18 +17,19 @@ Utilities for formatting and printing string.
 - No runtime error
 - Type safety
 - Single responsibility
-- Minimal
+- Minimum
 
 ## Why
 
 Existing formatting solutions offer multiple features.
 
-The Deno community already has `std/fmt::sprintf`. There are also various other
-3rd party libraries.
+The Deno community already has
+[std/fmt::sprintf](https://deno.land/std/fmt/printf.ts?doc=&s=sprintf). There
+are also various other 3rd party libraries.
 
 These could accomplish a lot of work. On the other hand, they are somewhat
 over-specified. You have to pay more cost than you need to. (cost here refers to
-code size).
+code size and execution speed).
 
 We decompose formatting into replacement and serialization. Then, focus on
 replacement.
@@ -37,7 +38,7 @@ We stick to single-function offerings and provide minimal implementations.
 
 ## Usage
 
-Type inference works well for template strings.
+Type inference works well for template literal.
 
 ```ts
 import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
@@ -160,9 +161,7 @@ format<"name" | "title">(string, {});
 
 ## API
 
-See [deno doc](https://) for all APIs.
-
-## Bundle size
+See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
 
 ## License
 
