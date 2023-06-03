@@ -21,6 +21,9 @@ Formatting and printing string utilities.
 
 ## Why
 
+The purpose of this project is to provide minimum replacement formatting
+function.
+
 Existing formatting solutions offer multiple features.
 
 The Deno community already has
@@ -33,8 +36,6 @@ code size and execution speed).
 
 We decompose formatting into replacement and serialization. Then, focus on
 replacement.
-
-We stick to single-function offerings and provide minimal implementations.
 
 ## Usage
 
