@@ -11,14 +11,6 @@
 
 Formatting and printing string utilities.
 
-## Features
-
-- No parsing
-- No runtime error
-- Type safety
-- Single responsibility
-- Minimum
-
 ## Why
 
 The purpose of this project is to provide minimum replacement formatting
@@ -184,6 +176,22 @@ This also allows you to escape placeholder.
 ## API
 
 See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
+
+## Performance
+
+Performance indicators shall be the following items:
+
+- bundle size
+
+Note that these are all guidelines as they do not provide the same
+functionality.
+
+### Bundle size
+
+| Name                        | Size                                                                                                                                                                                                                                     |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `format`                    | [![format:format](https://deno.bundlejs.com/?q=https://deno.land/x/format/mod.ts&treeshake=[{+format+}]&badge=)](https://bundlejs.com/?q=https%3A%2F%2Fdeno.land%2Fx%2Fformat%2Fmod.ts&treeshake=%5B%7B+format+%7D%5D)                   |
+| `std/fmt/print.ts::sprintf` | [![std/fmt/print.ts::sprintf](https://deno.bundlejs.com/?q=https://deno.land/std/fmt/printf.ts&treeshake=[{+sprintf+}]&badge=)](https://bundlejs.com/?q=https%3A%2F%2Fdeno.land%2Fstd%2Ffmt%2Fprintf.ts&treeshake=%5B%7B+sprintf+%7D%5D) |
 
 ## License
 
