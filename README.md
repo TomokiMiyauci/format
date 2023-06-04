@@ -102,17 +102,16 @@ Multiple placeholders:
 import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
-const result = format("[0] {name}: {title}", {
-  0: new Date("2038/1/1"),
-  name: "",
-  title: "",
+const result = format("[0] {description}", {
+  0: new Date("2038/1/19 03:14:08"),
+  description: "Time stopped",
 }, {
   placeholders: [
     { prefix: "{", suffix: "}" },
     { prefix: "[", suffix: "]" },
   ],
 });
-assertEquals(result, "abcde{fg}ijk]a}");
+assertEquals(result, "<Date::toString> Time stopped");
 ```
 
 The computational complexity of placeholder is O(n) compared to parameters. It
