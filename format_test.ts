@@ -94,6 +94,10 @@ describe("format", () => {
     assertEquals(result, "{fg}{ij}{{}}");
   });
 
+  it("should not throw error", () => {
+    assertEquals(format<"0">("{0}{1}", ["false"]), "false{1}");
+  });
+
   it("should change serialization", () => {
     const result = format("{0}{1}{2}", ["1", 1, true], {
       stringify: (param) => {

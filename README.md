@@ -128,7 +128,7 @@ is recommended to reduce the number of placeholders as much as possible.
 
 ### Custom serialization
 
-Argument serialization uses the `String` constructor by default.
+Parameter serialization uses the `String` constructor by default.
 
 To change this, specify the `stringify` option.
 
@@ -159,6 +159,27 @@ declare const string: string;
 //@ts-expect-error it should provide params.name and params.title
 format<"name" | "title">(string, {});
 ```
+
+### No throwing error
+
+`format` does not throw an error. Even if a parameter is missing.
+
+If type inference is working, there will never be a missing parameter.
+Therefore, no parameter checking is done at runtime.
+
+The following is valid.
+
+```ts
+import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
+import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+
+assertEquals(format<"0">("{0}{1}", ["false"]), "false{1}");
+```
+
+If you specify [generics](#override-type-inference), you must guarantee the
+parameters.
+
+This also allows you to escape placeholder.
 
 ## API
 
