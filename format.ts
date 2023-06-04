@@ -19,10 +19,10 @@ export interface FormatOptions<D extends Placeholder = Placeholder> {
    */
   placeholders?: readonly D[];
 
-  /** Serialize argument.
+  /** Serialize parameter.
    * @default String
    */
-  stringify?: (arg: unknown) => string;
+  stringify?: (param: unknown) => string;
 }
 
 /** Extract specifier(string that enclosed by {@link Placeholder}) from {@link T}. */

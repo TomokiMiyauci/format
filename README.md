@@ -47,11 +47,11 @@ import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
 
-//@ts-expect-error it should provide args.0 and args.name
+//@ts-expect-error it should provide params.0 and params.name
 format("{0} {name}!", {});
 ```
 
-If the specifier is numeric only, you can specify an array as an argument.
+If the specifier is numeric only, you can specify an array as an parameters.
 
 ```ts
 import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
@@ -59,7 +59,7 @@ import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 assertEquals(format("{0} world!", ["Hello"]), "Hello world!");
 
-//@ts-expect-error it should provide args.0
+//@ts-expect-error it should provide params.0
 format("{0} world!", []);
 ```
 
@@ -123,8 +123,8 @@ const result = format("[0] {name}: {title}", {
 assertEquals(result, "abcde{fg}ijk]a}");
 ```
 
-The computational complexity of placeholder is O(n) compared to argument. It is
-recommended to reduce the number of placeholders as much as possible.
+The computational complexity of placeholder is O(n) compared to parameters. It
+is recommended to reduce the number of placeholders as much as possible.
 
 ### Custom serialization
 
@@ -137,10 +137,10 @@ import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 const result = format("{0}{1}{2}", ["1", 1, true], {
-  stringify: (arg) => {
-    if (typeof arg === "string") return `"${arg}"`;
+  stringify: (param) => {
+    if (typeof param === "string") return `"${param}"`;
 
-    return String(arg);
+    return String(param);
   },
 });
 assertEquals(result, `"1"1true`);
@@ -156,7 +156,7 @@ import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 declare const string: string;
-//@ts-expect-error it should provide args.name and args.title
+//@ts-expect-error it should provide params.name and params.title
 format<"name" | "title">(string, {});
 ```
 

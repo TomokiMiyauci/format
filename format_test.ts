@@ -21,7 +21,7 @@ describe("format", () => {
       "Hello Tom!",
     );
 
-    //@ts-expect-error it should provide args.0 and args.name
+    //@ts-expect-error it should provide params.0 and params.name
     format("{0} {name}!", {});
   });
 
@@ -31,7 +31,7 @@ describe("format", () => {
       "1 2 3",
     );
 
-    //@ts-expect-error it should provide args
+    //@ts-expect-error it should provide params
     format("{0} {1} {2}", []);
   });
 
@@ -69,7 +69,7 @@ describe("format", () => {
     });
     assertEquals(result, "abcde{fg}ijk]a}");
 
-    // @ts-expect-error it should be error if args is lack
+    // @ts-expect-error it should be error if params is lack
     format("a[bcd]e{fg}{{ij}}[[]]{{{}}}", {}, {
       placeholders: [
         { prefix: "{{", suffix: "}}" },
@@ -96,10 +96,10 @@ describe("format", () => {
 
   it("should change serialization", () => {
     const result = format("{0}{1}{2}", ["1", 1, true], {
-      stringify: (arg) => {
-        if (typeof arg === "string") return `"${arg}"`;
+      stringify: (param) => {
+        if (typeof param === "string") return `"${param}"`;
 
-        return String(arg);
+        return String(param);
       },
     });
     assertEquals(result, `"1"1true`);
