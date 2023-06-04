@@ -33,9 +33,21 @@ export type ExtractSpecifier<T extends string, U extends Placeholder> =
     : never
     : never;
 
-/** Interpolate JavaScript value into string format. */
+/** Interpolate JavaScript value into string format.
+ *
+ * @example
+ * ```ts
+ * import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
+ * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ *
+ * assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
+ *
+ * //@ts-expect-error it should provide params.0 and params.name
+ * format("{0} {name}!", {});
+ * ```
+ */
 export function format<
-  const ArgKey extends string,
+  const ParamKey extends string,
   const U extends Placeholder = {
     prefix: Delimiter.Prefix;
     suffix: Delimiter.Suffix;
@@ -44,7 +56,7 @@ export function format<
 >(
   formatString: T,
   params: Readonly<
-    Record<ArgKey & IfElse<ExtractSpecifier<T, U>, string>, unknown>
+    Record<ParamKey & IfElse<ExtractSpecifier<T, U>, string>, unknown>
   >,
   options?: Readonly<FormatOptions<U>>,
 ) {
