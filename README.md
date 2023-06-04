@@ -14,7 +14,7 @@ Formatting and printing string utilities.
 ## Why
 
 The purpose of this project is to provide minimum replacement formatting
-function.
+solution.
 
 Existing formatting solutions offer multiple features.
 
