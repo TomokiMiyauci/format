@@ -11,14 +11,6 @@
 
 Formatting and printing string utilities.
 
-## Features
-
-- No parsing
-- No runtime error
-- Type safety
-- Single responsibility
-- Minimum
-
 ## Why
 
 The purpose of this project is to provide minimum replacement formatting
@@ -47,11 +39,11 @@ import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
 
-//@ts-expect-error it should provide args.0 and args.name
+//@ts-expect-error it should provide params.0 and params.name
 format("{0} {name}!", {});
 ```
 
-If the specifier is numeric only, you can specify an array as an argument.
+If the specifier is numeric only, you can specify an array as an parameters.
 
 ```ts
 import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
@@ -59,13 +51,13 @@ import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 assertEquals(format("{0} world!", ["Hello"]), "Hello world!");
 
-//@ts-expect-error it should provide args.0
+//@ts-expect-error it should provide params.0
 format("{0} world!", []);
 ```
 
-### Delimiter
+### Placeholder
 
-A delimiter is a pair of prefix and suffix.
+Placeholder is a pair of prefix and suffix.
 
 | Name   | Default |
 | ------ | ------- |
@@ -83,12 +75,12 @@ import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 const result = format("should be ${expected}, actual ${actual}", {
   expected: "string",
   actual: "number",
-}, { delimiters: [{ prefix: "${", suffix: "}" }] });
+}, { placeholders: [{ prefix: "${", suffix: "}" }] });
 assertEquals(result, "should be string, actual number");
 
 //@ts-expect-error it should be error
 format("should be ${expected}, actual ${actual}", {}, {
-  delimiters: [{ prefix: "${", suffix: "}" }],
+  placeholders: [{ prefix: "${", suffix: "}" }],
 });
 ```
 
@@ -99,12 +91,12 @@ import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 const result = format("Hello %s!!!", { "": "world" }, {
-  delimiters: [{ prefix: "%", suffix: "s" }],
+  placeholders: [{ prefix: "%", suffix: "s" }],
 });
 assertEquals(result, "Hello world!!!");
 ```
 
-Multiple delimiters:
+Multiple placeholders:
 
 ```ts
 import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
@@ -115,7 +107,7 @@ const result = format("[0] {name}: {title}", {
   name: "",
   title: "",
 }, {
-  delimiters: [
+  placeholders: [
     { prefix: "{", suffix: "}" },
     { prefix: "[", suffix: "]" },
   ],
@@ -123,12 +115,12 @@ const result = format("[0] {name}: {title}", {
 assertEquals(result, "abcde{fg}ijk]a}");
 ```
 
-The computational complexity of delimiter is O(n) compared to argument. It is
-recommended to reduce the number of delimiters as much as possible.
+The computational complexity of placeholder is O(n) compared to parameters. It
+is recommended to reduce the number of placeholders as much as possible.
 
 ### Custom serialization
 
-Argument serialization uses the `String` constructor by default.
+Parameter serialization uses the `String` constructor by default.
 
 To change this, specify the `stringify` option.
 
@@ -137,10 +129,10 @@ import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 const result = format("{0}{1}{2}", ["1", 1, true], {
-  stringify: (arg) => {
-    if (typeof arg === "string") return `"${arg}"`;
+  stringify: (param) => {
+    if (typeof param === "string") return `"${param}"`;
 
-    return String(arg);
+    return String(param);
   },
 });
 assertEquals(result, `"1"1true`);
@@ -156,13 +148,50 @@ import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 
 declare const string: string;
-//@ts-expect-error it should provide args.name and args.title
+//@ts-expect-error it should provide params.name and params.title
 format<"name" | "title">(string, {});
 ```
+
+### No throwing error
+
+`format` does not throw an error. Even if a parameter is missing.
+
+If type inference is working, there will never be a missing parameter.
+Therefore, no parameter checking is done at runtime.
+
+The following is valid.
+
+```ts
+import { format } from "https://deno.land/x/format@$VERSION/mod.ts";
+import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+
+assertEquals(format<"0">("{0}{1}", ["false"]), "false{1}");
+```
+
+If you specify [generics](#override-type-inference), you must guarantee the
+parameters.
+
+This also allows you to escape placeholder.
 
 ## API
 
 See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
+
+## Performance
+
+Performance indicators shall be the following items:
+
+- bundle size
+
+Note that these are all guidelines as they do not provide the same
+functionality.
+
+### Bundle size
+
+| Name                        | Size                                                                                                                                                                                                                                     |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `format`                    | [![format:format](https://deno.bundlejs.com/?q=https://deno.land/x/format/mod.ts&treeshake=[{+format+}]&badge=)](https://bundlejs.com/?q=https%3A%2F%2Fdeno.land%2Fx%2Fformat%2Fmod.ts&treeshake=%5B%7B+format+%7D%5D)                   |
+| `std/fmt/print.ts::sprintf` | [![std/fmt/print.ts::sprintf](https://deno.bundlejs.com/?q=https://deno.land/std/fmt/printf.ts&treeshake=[{+sprintf+}]&badge=)](https://bundlejs.com/?q=https%3A%2F%2Fdeno.land%2Fstd%2Ffmt%2Fprintf.ts&treeshake=%5B%7B+sprintf+%7D%5D) |
 
 ## License
 
