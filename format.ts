@@ -13,11 +13,11 @@ export interface Placeholder {
 }
 
 /** Format options. */
-export interface FormatOptions<D extends Placeholder = Placeholder> {
+export interface FormatOptions<T extends Placeholder = Placeholder> {
   /** List of {@link Placeholder}.
    * @default [{ prefix: "{", suffix: "}"}]
    */
-  placeholders?: readonly D[];
+  placeholders?: readonly T[];
 
   /** Serialize parameter.
    * @default String
