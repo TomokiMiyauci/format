@@ -33,7 +33,7 @@ export type ExtractSpecifier<T extends string, U extends Placeholder> =
     : never
     : never;
 
-/** Interpolate JavaScript value into string format.
+/** Interpolate JavaScript value into format string.
  *
  * @example
  * ```ts
