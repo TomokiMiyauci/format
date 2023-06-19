@@ -194,6 +194,4 @@ functionality.
 
 ## License
 
-Copyright © 2023-present [Tomoki Miyauchi](https://github.com/TomokiMiyauci).
-
-Released under the [MIT](./LICENSE) license
+[MIT](LICENSE) © 2023 Tomoki Miyauchi

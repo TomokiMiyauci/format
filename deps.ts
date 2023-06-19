@@ -1,4 +1,4 @@
-// Copyright 2023-latest Tomoki Miyauchi. All rights reserved. MIT license.
+// Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 // This module is browser compatible.
 
 export { escapeStringRegexp } from "https://deno.land/x/escape_string_regexp@v0.0.1/mod.ts";
