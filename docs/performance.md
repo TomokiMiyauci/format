@@ -22,11 +22,11 @@ runtime: deno 1.34.3 (x86_64-apple-darwin)
 benchmark                     time (avg)             (min … max)       p75       p99      p995
 ---------------------------------------------------------------- -----------------------------
 format@latest                  2.21 µs/iter        (2 µs … 3.16 µs)   2.27 µs   3.16 µs   3.16 µs
-std@0.190.0/fmt::springf       9.33 µs/iter   (7.62 µs … 261.12 µs)   8.45 µs  28.46 µs  53.34 µs
+std@0.190.0/fmt::sprintf       9.33 µs/iter   (7.62 µs … 261.12 µs)   8.45 µs  28.46 µs  53.34 µs
 
 summary
   format@latest
-   4.23x faster than std@0.190.0/fmt::springf
+   4.23x faster than std@0.190.0/fmt::sprintf
 ```
 
 ## Bundle size

@@ -30,7 +30,7 @@ Deno.bench(
   },
 );
 
-Deno.bench("std@0.190.0/fmt::springf", { group }, () => {
+Deno.bench("std@0.190.0/fmt::sprintf", { group }, () => {
   assertEquals(
     sprintf(
       Template.Std,
