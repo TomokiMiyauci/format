@@ -13,7 +13,7 @@ Formatting and printing string utilities.
 
 ## Table of Contents <!-- omit in toc -->
 
-- [Why](#why)
+- [Background](#background)
 - [Usage](#usage)
   - [Placeholder](#placeholder)
   - [Custom serialization](#custom-serialization)
@@ -24,7 +24,7 @@ Formatting and printing string utilities.
   - [Bundle size](#bundle-size)
 - [License](#license)
 
-## Why
+## Background
 
 The purpose of this project is to provide minimum replacement formatting
 solution.
