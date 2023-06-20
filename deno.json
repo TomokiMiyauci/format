@@ -1,16 +1,16 @@
 {
   "tasks": {
     "test": "deno test --import-map=./_test_import_map.json --doc",
-    "build:npm": "deno run -A _tools/build_npm.ts"
+    "build:npm": "deno run -A --no-lock _tools/build_npm.ts"
   },
   "fmt": {
-    "exclude": ["CHANGELOG.md", "CODE_OF_CONDUCT.md"]
+    "exclude": ["CHANGELOG.md"]
   },
   "lint": {
-    "exclude": ["CHANGELOG.md", "CODE_OF_CONDUCT.md"]
+    "exclude": ["CHANGELOG.md"]
   },
   "test": {
-    "exclude": ["CHANGELOG.md", "CODE_OF_CONDUCT.md"]
+    "exclude": ["CHANGELOG.md", "npm"]
   },
   "compilerOptions": {
     "noImplicitReturns": true,
