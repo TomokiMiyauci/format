@@ -65,35 +65,29 @@ export function format<
     placeholders = [{ prefix: Delimiter.Prefix, suffix: Delimiter.Suffix }],
   } = options ?? {};
 
-  return Object
-    .entries(params)
-    .flatMap(entry2Replacements)
-    .reduce(replaceReducer, formatString);
+  const patterns = placeholders
+    .map(_Placeholder.stringify)
+    .map(_Placeholder.escape)
+    .map(_Placeholder.represent)
+    .map(createGlobalRegexp);
 
-  /** Convert entry to list of {@link Replacement}. */
-  function entry2Replacements(
-    [key, value]: readonly [key: string, value: unknown],
-  ): Replacement[] {
-    const repr = stringify(value);
+  /** Replacer for interpolate {@link params}. */
+  function replacer(placeholder: string, specifier: string): string {
+    if (specifier in params) {
+      const param = (params as Record<typeof specifier, unknown>)[specifier];
 
-    return placeholders
-      .map(stringifyPlaceholder)
-      .map(escapeStringRegexp)
-      .map(createGlobalRegexp)
-      .map(pattern2Replacement);
-
-    /** Serialize {@link Placeholder} into string. */
-    function stringifyPlaceholder(
-      { prefix, suffix }: Readonly<Placeholder>,
-    ): string {
-      return `${prefix}${key}${suffix}`;
+      return stringify(param);
     }
 
-    /** Create {@link Replacement} from pattern. */
-    function pattern2Replacement(pattern: Readonly<RegExp>): Replacement {
-      return { pattern, alt: repr };
-    }
+    return placeholder;
   }
+
+  /** Reducer for replace with {@link replacer}. */
+  function replaceReducer(input: string, pattern: string | RegExp): string {
+    return input.replace(pattern, replacer);
+  }
+
+  return patterns.reduce(replaceReducer, formatString);
 }
 
 /** Default delimiter. */
@@ -102,27 +96,35 @@ const enum Delimiter {
   Suffix = "}",
 }
 
-/** Replacement API. */
-interface Replacement {
-  /** Replacement pattern. */
-  pattern: RegExp | string;
-
-  /** Alternative string. */
-  alt: string;
-}
-
 /** Create regexp with global flag. */
 export function createGlobalRegexp(pattern: string | RegExp): RegExp {
   return new RegExp(pattern, "g");
 }
 
-/** Reducer for replace with {@link Replacement} API. */
-export function replaceReducer(
-  acc: string,
-  replacement: Replacement,
-): string {
-  return acc.replace(replacement.pattern, replacement.alt);
-}
-
 /** If {@link T} is `never`, {@link U} otherwise; {@link T}. */
 type IfElse<T, U> = IsNever<T> extends true ? U : T;
+
+class _Placeholder {
+  /** Convert to {@link SPlaceholder}. */
+  static stringify(placeholder: Placeholder): SPlaceholder {
+    return {
+      prefix: `${placeholder.prefix}`,
+      suffix: `${placeholder.suffix}`,
+    };
+  }
+
+  /** Return escaped {@link SPlaceholder}. */
+  static escape(placeholder: SPlaceholder): SPlaceholder {
+    return {
+      prefix: escapeStringRegexp(placeholder.prefix),
+      suffix: escapeStringRegexp(placeholder.suffix),
+    };
+  }
+
+  /** Return pattern of placeholder. */
+  static represent(placeholder: Placeholder): string {
+    return `${placeholder.prefix}(.*?)${placeholder.suffix}`;
+  }
+}
+
+type SPlaceholder = Record<keyof Placeholder, string>;
