@@ -16,6 +16,7 @@ Formatting and printing string utilities.
 ## Table of Contents <!-- omit in toc -->
 
 - [Background](#background)
+- [Install](#install)
 - [Usage](#usage)
   - [Placeholder](#placeholder)
   - [Custom serialization](#custom-serialization)
@@ -44,6 +45,20 @@ code size and execution speed).
 
 We decompose formatting into replacement and serialization. Then, focus on
 replacement.
+
+## Install
+
+deno.land:
+
+```ts
+import * as mod from "https://deno.land/x/format@$VERSION/mod.ts";
+```
+
+npm:
+
+```bash
+npm i @miyauci/format
+```
 
 ## Usage
 
