@@ -23,6 +23,7 @@ Formatting and printing string utilities.
   - [Override type inference](#override-type-inference)
   - [No throwing error](#no-throwing-error)
 - [Performance](#performance)
+  - [Benchmark](#benchmark)
   - [Bundle size](#bundle-size)
 - [API](#api)
 - [Contributing](#contributing)
@@ -205,12 +206,37 @@ This also allows you to escape placeholder.
 
 ## Performance
 
-Performance indicators shall be the following items:
+Performance indicators shall be the follows:
 
-- bundle size
+- [Benchmark](#benchmark)
+- [Bundle Size](#bundle-size)
 
 Note that these are all guidelines as they do not provide the same
 functionality.
+
+### Benchmark
+
+You can try the benchmark:
+
+```bash
+deno bench
+```
+
+Snapshot:
+
+```bash
+cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+runtime: deno 1.34.3 (x86_64-apple-darwin)
+
+benchmark                     time (avg)             (min … max)       p75       p99      p995
+---------------------------------------------------------------- -----------------------------
+format@latest                  2.21 µs/iter        (2 µs … 3.16 µs)   2.27 µs   3.16 µs   3.16 µs
+std@0.190.0/fmt::springf       9.33 µs/iter   (7.62 µs … 261.12 µs)   8.45 µs  28.46 µs  53.34 µs
+
+summary
+  format@latest
+   4.23x faster than std@0.190.0/fmt::springf
+```
 
 ### Bundle size
 
