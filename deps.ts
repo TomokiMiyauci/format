@@ -1,7 +1,7 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 // This module is browser compatible.
 
-export { escape } from "https://deno.land/std@0.192.0/regexp/mod.ts";
+export { escapeStringRegexp } from "https://deno.land/x/escape_string_regexp@v0.0.1/mod.ts";
 
 /** Primitive data type. */
 export type Primitive = string | number | bigint | boolean | null | undefined;
