@@ -11,6 +11,19 @@
 
 Formatting and printing string utilities.
 
+## Table of Contents <!-- omit in toc -->
+
+- [Why](#why)
+- [Usage](#usage)
+  - [Placeholder](#placeholder)
+  - [Custom serialization](#custom-serialization)
+  - [Override type inference](#override-type-inference)
+  - [No throwing error](#no-throwing-error)
+- [API](#api)
+- [Performance](#performance)
+  - [Bundle size](#bundle-size)
+- [License](#license)
+
 ## Why
 
 The purpose of this project is to provide minimum replacement formatting
