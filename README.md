@@ -1,7 +1,7 @@
 # format
 
 [![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/format)
-[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/format/mod.ts)
+[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/format?doc)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/releases)
 [![codecov](https://codecov.io/github/TomokiMiyauci/format/branch/main/graph/badge.svg)](https://codecov.io/gh/TomokiMiyauci/format)
 [![GitHub](https://img.shields.io/github/license/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/blob/main/LICENSE)
@@ -208,7 +208,7 @@ See [performance](docs/performance.md).
 
 ## API
 
-See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
+See [deno doc](https://deno.land/x/format?doc) for all APIs.
 
 ## Contributing
 
