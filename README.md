@@ -22,6 +22,7 @@ Formatting and printing string utilities.
 - [Performance](#performance)
   - [Bundle size](#bundle-size)
 - [API](#api)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Background
@@ -204,6 +205,10 @@ functionality.
 ## API
 
 See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
