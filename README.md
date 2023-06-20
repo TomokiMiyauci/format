@@ -19,9 +19,9 @@ Formatting and printing string utilities.
   - [Custom serialization](#custom-serialization)
   - [Override type inference](#override-type-inference)
   - [No throwing error](#no-throwing-error)
-- [API](#api)
 - [Performance](#performance)
   - [Bundle size](#bundle-size)
+- [API](#api)
 - [License](#license)
 
 ## Background
@@ -185,10 +185,6 @@ parameters.
 
 This also allows you to escape placeholder.
 
-## API
-
-See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
-
 ## Performance
 
 Performance indicators shall be the following items:
@@ -204,6 +200,10 @@ functionality.
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `format`                    | [![format:format](https://deno.bundlejs.com/?q=https://deno.land/x/format@1.0.0/mod.ts&treeshake=[{+format+}]&badge=)](https://bundlejs.com/?q=https%3A%2F%2Fdeno.land%2Fx%2Fformat@1.0.0%2Fmod.ts&treeshake=%5B%7B+format+%7D%5D)       |
 | `std/fmt/print.ts::sprintf` | [![std/fmt/print.ts::sprintf](https://deno.bundlejs.com/?q=https://deno.land/std/fmt/printf.ts&treeshake=[{+sprintf+}]&badge=)](https://bundlejs.com/?q=https%3A%2F%2Fdeno.land%2Fstd%2Ffmt%2Fprintf.ts&treeshake=%5B%7B+sprintf+%7D%5D) |
+
+## API
+
+See [deno doc](https://deno.land/x/format/mod.ts) for all APIs.
 
 ## License
 
