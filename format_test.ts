@@ -1,11 +1,6 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
-import {
-  createGlobalRegexp,
-  type ExtractSpecifier,
-  format,
-  replaceReducer,
-} from "./format.ts";
+import { createGlobalRegexp, type ExtractSpecifier, format } from "./format.ts";
 import {
   assertEquals,
   assertType,
@@ -184,14 +179,5 @@ describe("createGlobalRegexp", () => {
   it("should return regexp with global flag", () => {
     assertEquals(createGlobalRegexp(/a/), /a/g);
     assertEquals(createGlobalRegexp(/a/ig), /a/g);
-  });
-});
-
-describe("replaceReducer", () => {
-  it("should replaced value", () => {
-    assertEquals(
-      replaceReducer("abcde", { pattern: "bcd", alt: "bbccdd" }),
-      "abbccdde",
-    );
   });
 });
