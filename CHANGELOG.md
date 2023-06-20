@@ -1,3 +1,15 @@
+## [1.0.1](https://github.com/TomokiMiyauci/format/compare/1.0.0...1.0.1) (2023-06-20)
+
+
+### Performance Improvements
+
+* **format:** change the replacement logic ([7b1a285](https://github.com/TomokiMiyauci/format/commit/7b1a285c6f3b78a6878f8541402b35b7db168179)), closes [#2](https://github.com/TomokiMiyauci/format/issues/2)
+
+
+### Reverts
+
+* **deps:** use minimum escape ([7709fe1](https://github.com/TomokiMiyauci/format/commit/7709fe18ccf25ec009629ee7d556024e0ed69558))
+
 ## [1.0.1-beta.1](https://github.com/TomokiMiyauci/format/compare/1.0.0...1.0.1-beta.1) (2023-06-20)
 
 
