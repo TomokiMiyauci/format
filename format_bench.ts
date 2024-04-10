@@ -1,8 +1,7 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 
 import { format } from "./mod.ts";
-import { sprintf } from "https://deno.land/std@0.190.0/fmt/printf.ts";
-import { assertEquals } from "./_dev_deps.ts";
+import { assertEquals, sprintf } from "./_dev_deps.ts";
 
 const enum Template {
   This =
