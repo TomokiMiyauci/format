@@ -37,8 +37,8 @@ export type ExtractSpecifier<T extends string, U extends Placeholder> =
  *
  * @example
  * ```ts
- * import { format } from "https://deno.land/x/format/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ * import { format } from "@miyauci/format";
+ * import { assertEquals } from "@std/assert";
  *
  * assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
  *

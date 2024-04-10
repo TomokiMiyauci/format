@@ -49,14 +49,14 @@ replacement.
 
 deno.land:
 
-```ts
-import * as mod from "https://deno.land/x/format/mod.ts";
+```bash
+deno add @miyauci/format
 ```
 
 npm:
 
 ```bash
-npm i @miyauci/format
+npx jsr add @miyauci/format
 ```
 
 ## Usage
@@ -64,8 +64,8 @@ npm i @miyauci/format
 Type inference works well for template literal.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
 
@@ -76,8 +76,8 @@ format("{0} {name}!", {});
 If the specifier is numeric only, you can specify an array as an parameters.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 assertEquals(format("{0} world!", ["Hello"]), "Hello world!");
 
@@ -99,8 +99,8 @@ This can be changed.
 Template literal style:
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("should be ${expected}, actual ${actual}", {
   expected: "string",
@@ -117,8 +117,8 @@ format("should be ${expected}, actual ${actual}", {}, {
 Percent style:
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("Hello %s!!!", { "": "world" }, {
   placeholders: [{ prefix: "%", suffix: "s" }],
@@ -129,8 +129,8 @@ assertEquals(result, "Hello world!!!");
 Multiple placeholders:
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("[0] {description}", {
   0: new Date("2038/1/19 03:14:08"),
@@ -154,8 +154,8 @@ Parameter serialization uses the `String` constructor by default.
 To change this, specify the `stringify` option.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("{0}{1}{2}", ["1", 1, true], {
   stringify: (param) => {
@@ -173,8 +173,8 @@ In certain circumstances, template literal types cannot be provided. In such
 cases, generics can be specified.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 declare const string: string;
 //@ts-expect-error it should provide params.name and params.title
@@ -191,8 +191,8 @@ Therefore, no parameter checking is done at runtime.
 The following is valid.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 assertEquals(format<"0">("{0}{1}", ["false"]), "false{1}");
 ```
@@ -208,7 +208,7 @@ See [performance](docs/performance.md).
 
 ## API
 
-See [deno doc](https://deno.land/x/format?doc) for all APIs.
+See [jsr doc](https://jsr.io/@miyauci/format) for all APIs.
 
 ## Contributing
 
