@@ -1,7 +1,7 @@
 {
   "tasks": {
     "test": "deno test --import-map=./_test_import_map.json --doc",
-    "build:npm": "deno run -A --no-lock _tools/build_npm.ts"
+    "publish": "deno publish -c jsr.json"
   },
   "fmt": {
     "exclude": ["CHANGELOG.md"]
