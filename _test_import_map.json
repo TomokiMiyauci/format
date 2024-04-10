@@ -1,6 +1,6 @@
 {
   "imports": {
-    "https://deno.land/x/format/": "./",
-    "https://deno.land/std/": "https://deno.land/std@0.190.0/"
+    "@miyauci/format": "./mod.ts",
+    "@std/assert": "jsr:@std/assert@^0.221.0"
   }
 }

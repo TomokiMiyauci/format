@@ -1,14 +1,11 @@
 # format
 
-[![deno land](http://img.shields.io/badge/available%20on-deno.land/x-lightgrey.svg?logo=deno)](https://deno.land/x/format)
-[![deno doc](https://doc.deno.land/badge.svg)](https://deno.land/x/format?doc)
+[![JSR](https://jsr.io/badges/@<scope>/<package>)](https://jsr.io/@<scope>/<package>)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/releases)
 [![codecov](https://codecov.io/github/TomokiMiyauci/format/branch/main/graph/badge.svg)](https://codecov.io/gh/TomokiMiyauci/format)
 [![GitHub](https://img.shields.io/github/license/TomokiMiyauci/format)](https://github.com/TomokiMiyauci/format/blob/main/LICENSE)
 
 [![test](https://github.com/TomokiMiyauci/format/actions/workflows/test.yaml/badge.svg)](https://github.com/TomokiMiyauci/format/actions/workflows/test.yaml)
-[![NPM](https://nodei.co/npm/@miyauci/format.png?mini=true)](https://nodei.co/npm/@miyauci/format/)
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 
 Formatting and printing string utilities.
@@ -49,14 +46,14 @@ replacement.
 
 deno.land:
 
-```ts
-import * as mod from "https://deno.land/x/format/mod.ts";
+```bash
+deno add @miyauci/format
 ```
 
 npm:
 
 ```bash
-npm i @miyauci/format
+npx jsr add @miyauci/format
 ```
 
 ## Usage
@@ -64,8 +61,8 @@ npm i @miyauci/format
 Type inference works well for template literal.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
 
@@ -76,8 +73,8 @@ format("{0} {name}!", {});
 If the specifier is numeric only, you can specify an array as an parameters.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 assertEquals(format("{0} world!", ["Hello"]), "Hello world!");
 
@@ -99,8 +96,8 @@ This can be changed.
 Template literal style:
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("should be ${expected}, actual ${actual}", {
   expected: "string",
@@ -117,8 +114,8 @@ format("should be ${expected}, actual ${actual}", {}, {
 Percent style:
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("Hello %s!!!", { "": "world" }, {
   placeholders: [{ prefix: "%", suffix: "s" }],
@@ -129,8 +126,8 @@ assertEquals(result, "Hello world!!!");
 Multiple placeholders:
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("[0] {description}", {
   0: new Date("2038/1/19 03:14:08"),
@@ -154,8 +151,8 @@ Parameter serialization uses the `String` constructor by default.
 To change this, specify the `stringify` option.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 const result = format("{0}{1}{2}", ["1", 1, true], {
   stringify: (param) => {
@@ -173,8 +170,8 @@ In certain circumstances, template literal types cannot be provided. In such
 cases, generics can be specified.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 declare const string: string;
 //@ts-expect-error it should provide params.name and params.title
@@ -191,8 +188,8 @@ Therefore, no parameter checking is done at runtime.
 The following is valid.
 
 ```ts
-import { format } from "https://deno.land/x/format/mod.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+import { format } from "@miyauci/format";
+import { assertEquals } from "@std/assert";
 
 assertEquals(format<"0">("{0}{1}", ["false"]), "false{1}");
 ```
@@ -208,7 +205,7 @@ See [performance](docs/performance.md).
 
 ## API
 
-See [deno doc](https://deno.land/x/format?doc) for all APIs.
+See [jsr doc](https://jsr.io/@miyauci/format) for all APIs.
 
 ## Contributing
 

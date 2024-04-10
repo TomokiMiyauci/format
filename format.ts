@@ -1,7 +1,7 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 // This module is browser compatible.
 
-import { escapeStringRegexp, type IsNever, type Primitive } from "./deps.ts";
+import { escape, type IsNever, type Primitive } from "./deps.ts";
 
 /** Placeholder API. */
 export interface Placeholder {
@@ -37,8 +37,8 @@ export type ExtractSpecifier<T extends string, U extends Placeholder> =
  *
  * @example
  * ```ts
- * import { format } from "https://deno.land/x/format/mod.ts";
- * import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
+ * import { format } from "@miyauci/format";
+ * import { assertEquals } from "@std/assert";
  *
  * assertEquals(format("{0} {name}!", { 0: "Hello", name: "Tom" }), "Hello Tom!");
  *
@@ -47,7 +47,7 @@ export type ExtractSpecifier<T extends string, U extends Placeholder> =
  * ```
  */
 export function format<
-  const ParamKey extends string,
+  const ParamKey extends string = never,
   const U extends Placeholder = {
     prefix: Delimiter.Prefix;
     suffix: Delimiter.Suffix;
@@ -56,10 +56,13 @@ export function format<
 >(
   formatString: T,
   params: Readonly<
-    Record<ParamKey & IfElse<ExtractSpecifier<T, U>, string>, unknown>
+    Record<
+      IsNever<ParamKey> extends true ? ExtractSpecifier<T, U> : ParamKey,
+      unknown
+    >
   >,
   options?: Readonly<FormatOptions<U>>,
-) {
+): string {
   const {
     stringify = String,
     placeholders = [{ prefix: Delimiter.Prefix, suffix: Delimiter.Suffix }],
@@ -101,9 +104,6 @@ export function createGlobalRegexp(pattern: string | RegExp): RegExp {
   return new RegExp(pattern, "g");
 }
 
-/** If {@link T} is `never`, {@link U} otherwise; {@link T}. */
-type IfElse<T, U> = IsNever<T> extends true ? U : T;
-
 class _Placeholder {
   /** Convert to {@link SPlaceholder}. */
   static stringify(placeholder: Placeholder): SPlaceholder {
@@ -116,8 +116,8 @@ class _Placeholder {
   /** Return escaped {@link SPlaceholder}. */
   static escape(placeholder: SPlaceholder): SPlaceholder {
     return {
-      prefix: escapeStringRegexp(placeholder.prefix),
-      suffix: escapeStringRegexp(placeholder.suffix),
+      prefix: escape(placeholder.prefix),
+      suffix: escape(placeholder.suffix),
     };
   }
 
