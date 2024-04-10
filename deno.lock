@@ -1,5 +1,15 @@
 {
-  "version": "2",
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@std/regexp@^0.221.0": "jsr:@std/regexp@0.221.0"
+    },
+    "jsr": {
+      "@std/regexp@0.221.0": {
+        "integrity": "6ef49d56386414ed448252aeda15573087b69eb2c4b59dd7390506cc76ac7f6d"
+      }
+    }
+  },
   "remote": {
     "https://deno.land/std@0.190.0/fmt/colors.ts": "d67e3cd9f472535241a8e410d33423980bec45047e343577554d3356e1f0ef4e",
     "https://deno.land/std@0.190.0/fmt/printf.ts": "e5b426cd6ad13df5d408e9c375c025d59de30e380c5534715bd892df874ab057",

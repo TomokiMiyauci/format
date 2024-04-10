@@ -1,7 +1,7 @@
 // Copyright © 2023 Tomoki Miyauchi. All rights reserved. MIT license.
 // This module is browser compatible.
 
-import { escapeStringRegexp, type IsNever, type Primitive } from "./deps.ts";
+import { escape, type IsNever, type Primitive } from "./deps.ts";
 
 /** Placeholder API. */
 export interface Placeholder {
@@ -116,8 +116,8 @@ class _Placeholder {
   /** Return escaped {@link SPlaceholder}. */
   static escape(placeholder: SPlaceholder): SPlaceholder {
     return {
-      prefix: escapeStringRegexp(placeholder.prefix),
-      suffix: escapeStringRegexp(placeholder.suffix),
+      prefix: escape(placeholder.prefix),
+      suffix: escape(placeholder.suffix),
     };
   }
 
