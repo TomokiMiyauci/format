@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/TomokiMiyauci/format/compare/1.0.1...1.1.0) (2024-04-10)
+
+
+### Bug Fixes
+
+* **format:** fix type inferernce ([8e0142a](https://github.com/TomokiMiyauci/format/commit/8e0142a8072eefd541252b32fa9d14be501ca6b4))
+
+
+### Features
+
+* **deps:** change from deno.land module to jsr module ([a8aa3a8](https://github.com/TomokiMiyauci/format/commit/a8aa3a8bae5f86effb2ddb9fd19eafe2f334514a))
+
 # [1.1.0-beta.1](https://github.com/TomokiMiyauci/format/compare/1.0.1...1.1.0-beta.1) (2024-04-10)
 
 
