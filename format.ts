@@ -62,7 +62,7 @@ export function format<
     >
   >,
   options?: Readonly<FormatOptions<U>>,
-) {
+): string {
   const {
     stringify = String,
     placeholders = [{ prefix: Delimiter.Prefix, suffix: Delimiter.Suffix }],
