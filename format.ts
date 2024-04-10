@@ -47,7 +47,7 @@ export type ExtractSpecifier<T extends string, U extends Placeholder> =
  * ```
  */
 export function format<
-  const ParamKey extends string,
+  const ParamKey extends string = never,
   const U extends Placeholder = {
     prefix: Delimiter.Prefix;
     suffix: Delimiter.Suffix;
@@ -56,7 +56,10 @@ export function format<
 >(
   formatString: T,
   params: Readonly<
-    Record<ParamKey & IfElse<ExtractSpecifier<T, U>, string>, unknown>
+    Record<
+      IsNever<ParamKey> extends true ? ExtractSpecifier<T, U> : ParamKey,
+      unknown
+    >
   >,
   options?: Readonly<FormatOptions<U>>,
 ) {
@@ -100,9 +103,6 @@ const enum Delimiter {
 export function createGlobalRegexp(pattern: string | RegExp): RegExp {
   return new RegExp(pattern, "g");
 }
-
-/** If {@link T} is `never`, {@link U} otherwise; {@link T}. */
-type IfElse<T, U> = IsNever<T> extends true ? U : T;
 
 class _Placeholder {
   /** Convert to {@link SPlaceholder}. */
