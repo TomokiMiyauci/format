@@ -24,21 +24,11 @@ jobs:
         with:
           deno-version: ${{ matrix.deno }}
 
-      - name: Get tag version
-        if: startsWith(github.ref, 'refs/tags/')
-        id: get_tag_version
-        run: echo "TAG_VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
-
-      - name: Debug
-        run: env | grep TAG
-        env:
-          TAG: ${{ github.event.release.tag_name}}
-
       - name: Modify jsr config
         uses: maxgfr/github-change-json@main
         with:
           key: version
-          value: ${{steps.get_tag_version.outputs.TAG_VERSION}}
+          value: ${{ github.event.release.tag_name}}
           path: ./jsr.json
 
       - name: publish
