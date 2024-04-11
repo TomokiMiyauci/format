@@ -44,7 +44,7 @@ replacement.
 
 ## Install
 
-deno.land:
+deno:
 
 ```bash
 deno add @miyauci/format
